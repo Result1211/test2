@@ -6,12 +6,13 @@ from selenium.common.exceptions import *
 
 
 class Application(object):
-    def __init__(self, driver):
+    def __init__(self, driver, base_url):
         self.driver = driver
+        self.base_url = base_url
         self.wait = WebDriverWait(driver, 10)
 
     def go_to_home_page(self):
-        self.driver.get("http://kuki.webtest2.htc-cs.com/"+"users/login")
+        self.driver.get(self.base_url)
 
     def logout(self):
         driver = self.driver

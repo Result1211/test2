@@ -2,8 +2,8 @@ import pytest
 
 
 def pytest_addoption(parser):
-    parser.addoption("--browser", action="Store", default="Chrome", help="browser type")
-    parser.addoption("--base_url", action="store", default="http://kuki.webtest2.htc-cs.com/"+"users/login", help="base_url")
+    parser.addoption("--browser", action="store", default="Chrome", help="browser type")
+    parser.addoption("--base_url", action="store", default="", help="base_url")
 
 
 @pytest.fixture(scope="module")

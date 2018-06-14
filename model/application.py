@@ -3,43 +3,38 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.expected_conditions import presence_of_element_located
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.common.exceptions import *
+from pages.login_page import LoginPage
+from pages.internal_page import InternalPage
+from pages.main_page import MainPage
+from pdb import set_trace as bp
 
 
 class Application(object):
     def __init__(self, driver, base_url):
         self.driver = driver
-        self.base_url = base_url
+        driver.get(base_url)
+        self.login_page = LoginPage(driver, base_url)
+        self.internal_page = InternalPage(driver, base_url)
+        self.main_page = MainPage(driver, base_url)
         self.wait = WebDriverWait(driver, 10)
 
-    def go_to_home_page(self):
-        self.driver.get(self.base_url)
+    #def go_to_home_page(self):
+     #   self.driver.get(self.base_url)
 
     def logout(self):
-        driver = self.driver
-        driver.find_element_by_link_text("Выйти").click()
+        self.internal_page.logout_button.click()
+        #self.driver.find_element_by_CSS_SELECTOR("a[href='/users/logout']").click()
 
     def login(self, user):
-        driver = self.driver
-        driver.find_element_by_id("user_email").click()
-        driver.find_element_by_id("user_email").clear()
-        driver.find_element_by_id("user_email").send_keys(user.user_email)
-        driver.find_element_by_id("user_password").click()
-        driver.find_element_by_id("user_password").clear()
-        driver.find_element_by_id("user_password").send_keys(user.user_password)
-        driver.find_element_by_name("commit").click()
+        lp = self.login_page
+        lp.user_email_field.clear()
+        lp.user_email_field.send_keys (user.user_email)
+        lp.user_password_field.clear()
+        lp.user_password_field.send_keys(user.user_password)
+        lp.submit_button.click()
 
     def is_logged_in(self):
-        driver = self.driver
-        try:
-            self.wait.until(presence_of_element_located((By.CSS_SELECTOR, "div.alert-box")))
-            return True
-        except WebDriverException:
-            return False
+        return self.internal_page.is_this_page
 
     def is_not_logged_in(self):
-        driver = self.driver
-        try:
-            self.wait.until(presence_of_element_located((By.CSS_SELECTOR, "div.alert-box")))
-            return True
-        except WebDriverException:
-            return False
+        return self.main_page.is_this_page

@@ -26,6 +26,7 @@ class Application(object):
         #self.driver.find_element_by_CSS_SELECTOR("a[href='/users/logout']").click()
 
     def login(self, user):
+        self.main_page.login_button.click()
         lp = self.login_page
         lp.user_email_field.clear()
         lp.user_email_field.send_keys (user.user_email)
@@ -38,3 +39,6 @@ class Application(object):
 
     def is_not_logged_in(self):
         return self.main_page.is_this_page
+
+    def is_not_logged(self):
+        return self.login_page.is_this_page

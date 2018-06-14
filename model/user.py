@@ -8,8 +8,8 @@ class User(object):
     def Admin(cls):
         return cls(user_email="test10@test.ru", user_password="tester10")
 
-    # @classmethod
-    # def random(cls):
-    #     from random import randint
-    #     return cls(user_email="user"+str(randint(1, 10))+"@test.ru",
-    #                user_password="pass"+str(randint(1, 10)))
+    @classmethod
+    def random(cls):
+        from random import randint
+        return cls(user_email="user"+str(randint(1, 10))+"@test.ru",
+                   user_password="pass"+str(randint(1, 10)))

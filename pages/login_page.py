@@ -18,4 +18,4 @@ class LoginPage(Page):
 
     @property
     def is_this_page(self):
-        return self.is_element_visible((By.CSS_SELECTOR, "a[href='/user/login']"))
+        return self.is_element_visible((By.CSS_SELECTOR, "a[href='/users/login']"))

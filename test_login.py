@@ -2,7 +2,7 @@
 from model.user import User
 from selenium import webdriver
 from selenium.common.exceptions import *
-from selenium_fixture import app
+from conftest import app
 
 
 def test_invalid_login(app):

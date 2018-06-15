@@ -1,5 +1,5 @@
 from model.user import User
-from selenium_fixture import app
+from conftest import app
 
 def test_add_user(app):
     new_user = User.random_valid()

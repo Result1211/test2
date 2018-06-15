@@ -19,3 +19,7 @@ class InternalPage(Page):
     @property
     def edit_button(self):
         return self.driver.find_element(By.CSS_SELECTOR, "a[href='/users/edit']")
+
+    @property
+    def movie_poster(self):
+        return self.driver.find_element(By.CSS_SELECTOR, "a[href='/movies/1']")

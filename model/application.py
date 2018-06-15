@@ -8,6 +8,7 @@ from pages.internal_page import InternalPage
 from pages.main_page import MainPage
 from pages.register_page import RegisterPage
 from pages.edit_page import EditPage
+from pages.movie_page import MoviePage
 from pdb import set_trace as bp
 
 
@@ -19,6 +20,7 @@ class Application(object):
         self.login_page = LoginPage(driver, base_url)
         self.internal_page = InternalPage(driver, base_url)
         self.main_page = MainPage(driver, base_url)
+        self.movie_page = MoviePage(driver, base_url)
         self.register_page = RegisterPage(driver, base_url)
         self.edit_page = EditPage(driver, base_url)
         self.wait = WebDriverWait(driver, 10)
@@ -64,6 +66,17 @@ class Application(object):
         lp = self.edit_page
         lp.submit_button.click()
         self.wait.until(alert_is_present()).accept()
+
+    def add_movie(self):
+        self.internal_page.movie_poster.click()
+        lp = self.movie_page
+        lp.submit_button.click()
+
+    def remove_movie(self):
+        #self.internal_page.movie_poster.click()
+        lp = self.movie_page
+        lp.submit_button.click()
+
 
 
 

@@ -9,7 +9,13 @@ class User(object):
         return cls(user_email="test10@test.ru", user_password="tester10")
 
     @classmethod
-    def random(cls):
+    def random_invalid(cls):
         from random import randint
         return cls(user_email="user"+str(randint(1, 10))+"@test.ru",
                    user_password="pass"+str(randint(1, 10)))
+
+    @classmethod
+    def random_valid(cls):
+        from random import randint
+        return cls(user_email="user" + str(randint(1, 100)) + "@test.ru",
+                   user_password="pass" + str(randint(1, 100)) + "word")

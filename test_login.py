@@ -7,7 +7,7 @@ from selenium_fixture import app
 
 def test_invalid_login(app):
 #    app.go_to_home_page()
-    app.login(User.random())
+    app.login(User.random_invalid())
     assert app.is_not_logged()
 
 

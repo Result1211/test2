@@ -17,3 +17,7 @@ class InternalPage(Page):
         return self.driver.find_element(By.CSS_SELECTOR, "a[href='/users/logout']")
             # self.driver.find_element_by_CSS_SELECTOR("a[href='/users/logout']")
         # return self.driver.find_element_by_CSS_SELECTOR("a[href='/users/logout']")
+
+    @property
+    def edit_button(self):
+        return self.driver.find_element(By.CSS_SELECTOR, "a[href='/users/edit']")

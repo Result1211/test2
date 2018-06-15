@@ -15,3 +15,7 @@ class MainPage(Page):
     @property
     def is_this_page(self):
         return self.is_element_visible((By.CSS_SELECTOR, "a[href='/users/login']"))
+
+    @property
+    def register_button(self):
+        return self.driver.find_element(By.CSS_SELECTOR, "a[href='/users/register']")

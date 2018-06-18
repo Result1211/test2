@@ -9,6 +9,7 @@ from pages.main_page import MainPage
 from pages.register_page import RegisterPage
 from pages.edit_page import EditPage
 from pages.movie_page import MoviePage
+from pages.cart_page import CartPage
 from pdb import set_trace as bp
 
 
@@ -23,6 +24,7 @@ class Application(object):
         self.movie_page = MoviePage(driver, base_url)
         self.register_page = RegisterPage(driver, base_url)
         self.edit_page = EditPage(driver, base_url)
+        self.cart_page = CartPage(driver, base_url)
         self.wait = WebDriverWait(driver, 10)
 
     #def go_to_home_page(self):
@@ -71,11 +73,34 @@ class Application(object):
         self.internal_page.movie_poster.click()
         lp = self.movie_page
         lp.submit_button.click()
+        lp.cart_button.click()
 
     def remove_movie(self):
         #self.internal_page.movie_poster.click()
+        lp = self.cart_page
+        lp.movie_poster.click()
+        mv = self.movie_page
+        mv.submit_button.click()
+
+
+    # def move_cart_page(self):
+    #     mv = self.movie_page
+    #     mv.cart_button.click()
+    #     self.movie_page.cart_button.click()
+    #     lp = self.cart_page
+
+    def add_movie_in_cart(self):
+        return self.cart_page.movie_on
+
+    def remove_movie_in_cart(self):
         lp = self.movie_page
-        lp.submit_button.click()
+        lp.cart_button.click()
+        mv = self.cart_page
+        return self.cart_page.movie_off
+
+
+
+
 
 
 
